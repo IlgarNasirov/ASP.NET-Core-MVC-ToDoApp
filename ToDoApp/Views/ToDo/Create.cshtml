@@ -1,0 +1,26 @@
+﻿@model ToDoApp.DTOs.TodoDTO;
+@{
+    ViewData["Title"] = "Create";
+}
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h1 class="mt-3 mb-4">Create ToDo.</h1>
+            <hr />
+        </div>
+        <div class="mb-3">
+        <label asp-for="Text"></label>
+        <input asp-for="Text" class="form-control" type="text"/>
+        <span asp-validation-for="Text" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="ToDo" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to list
+        </a>
+    </div>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

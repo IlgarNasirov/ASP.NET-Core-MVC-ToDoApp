@@ -1,0 +1,39 @@
+﻿@model ToDoApp.DTOs.LoginUserDTO;
+@{
+    ViewData["Title"] = "Login";
+}
+<h1 style="text-align:center; margin-top:70px; margin-bottom:90px;">Welcome to login page!</h1>
+<form method="post">
+    <div class="border p-3 mt-4">
+    <div class="mb-3">
+    <label asp-for="Email"></label> 
+    <input asp-for="Email" class="form-control" type="email" value=@ViewData["email"] />
+    <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+     <label asp-for="Password"></label> 
+    <input class="form-control" asp-for="Password" type="password"/>
+    <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+    <input class="form-check-input" asp-for="RememberMe" type="checkbox"/>
+    <label class="form-check-label" asp-for="RememberMe">Remember me</label> 
+    </div>
+    <button type="submit" class="btn btn-primary" style="width:150px">Login</button>
+    <br />
+    <span class="text-success">@TempData["success"]</span>
+    <span class="text-danger">@TempData["error"]</span>
+    <span class="text-danger">@ViewData["error"]</span>
+    <span class="text-warning">@TempData["check"]</span>
+    </div>
+</form>
+<a class="btn btn-dark mt-4" asp-controller="User" asp-action="Register">Create new account</a>
+<br />
+<br />
+<a class="btn btn-outline-secondary" asp-controller="User" asp-action="ForgotPassword">Forgot password?</a>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,27 @@
+﻿@model ToDoApp.DTOs.RegisterUserDTO;
+@{
+    ViewData["Title"] = "Register";
+}
+<h1 style="text-align:center; margin-top:60px; margin-bottom:60px;">Welcome to register page!</h1>
+<form method="post">
+    <span class="text-danger">@ViewData["error"]</span>
+    <div class="border p-3 mt-4">
+    <div class="mb-3">
+    <label asp-for="FullName">Full name</label>
+    <input asp-for="FullName" class="form-control" type="text"/>
+    <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+    <label asp-for="Email"></label>
+    <input asp-for="Email" class="form-control" type="email"/>
+    <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary" style="width:150px">Register</button>
+    </div>
+</form>
+<a class="btn btn-dark mt-4" asp-controller="User" asp-action="Login">I already have an account</a>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
